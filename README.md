@@ -1,2 +1,12 @@
-# planner-db
-Este módulo gestiona la base de datos de Planner.
+# iot-db
+
+## Usage
+
+``` js
+const setupDatabase = require('iot-db')
+
+setupDabase(config).then(db => {
+    const { Agent, Metric} = db
+
+}).catch(err => console.error(err))
+```
