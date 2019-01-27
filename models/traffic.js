@@ -9,7 +9,11 @@ module.exports = function setupTrafficModel (config) {
   return sequelize.define('trafico', {
     trafico: {
       type: Sequelize.DOUBLE,
-      allosNull: false
+      allowNull: false
+    },
+    estado: {
+      type: Sequelize.INTEGER,
+      allowNull: false
     }
   })
 }

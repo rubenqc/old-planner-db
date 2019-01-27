@@ -3,16 +3,16 @@
 const Sequelize = require('sequelize')
 const setupDatabase = require('../lib/db')
 
-module.exports = function setupRegionModel (config) {
+module.exports = function setupUsersModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('region', {
-    region: {
-      type: Sequelize.INTEGER,
+  return sequelize.define('usuarios', {
+    usuarios: {
+      type: Sequelize.STRING,
       allowNull: false
     },
-    nombre: {
-      type: Sequelize.STRING,
+    estado: {
+      type: Sequelize.INTEGER,
       allowNull: false
     }
   })

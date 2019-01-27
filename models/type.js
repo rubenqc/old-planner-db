@@ -3,11 +3,11 @@
 const Sequelize = require('sequelize')
 const setupDatabase = require('../lib/db')
 
-module.exports = function setupRegionModel (config) {
+module.exports = function setupTypeModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('region', {
-    region: {
+  return sequelize.define('tipo', {
+    tipo: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
