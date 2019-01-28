@@ -10,6 +10,11 @@ module.exports = function setupSauUsersModel (config) {
     sau_usuarios: {
       type: Sequelize.DOUBLE,
       allowNull: false
+    },
+    estado: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     }
   })
 }

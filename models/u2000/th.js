@@ -10,6 +10,11 @@ module.exports = function setupUthModel (config) {
     th: {
       type: Sequelize.DOUBLE,
       allowNull: false
+    },
+    estado: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaulValue: 0
     }
   })
 }

@@ -10,6 +10,11 @@ module.exports = function setupUpdpModel (config) {
     pdp: {
       type: Sequelize.DOUBLE,
       allowNull: false
+    },
+    estado: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     }
   })
 }

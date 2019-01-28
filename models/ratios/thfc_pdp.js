@@ -10,6 +10,11 @@ module.exports = function setupThfcPdpModel (config) {
     thfc_pdp: {
       type: Sequelize.DOUBLE,
       allowNull: false
+    },
+    estado: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     }
   })
 }

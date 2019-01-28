@@ -10,6 +10,11 @@ module.exports = function setupThfcSauModel (config) {
     thfc_sau: {
       type: Sequelize.DOUBLE,
       allowNull: false
+    },
+    estado: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaulValue: 0
     }
   })
 }

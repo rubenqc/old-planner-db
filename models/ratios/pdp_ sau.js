@@ -10,6 +10,11 @@ module.exports = function setupPdpSauModel (config) {
     pdp_sau: {
       type: Sequelize.DOUBLE,
       allowNull: false
+    },
+    estado: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaultValue: 0
     }
   })
 }
