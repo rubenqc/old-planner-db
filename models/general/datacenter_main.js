@@ -1,13 +1,13 @@
 'use strict'
 
 const Sequelize = require('sequelize')
-const setupDatabase = require('../lib/db')
+const setupDatabase = require('../../lib/db')
 
-module.exports = function setupRegionModel (config) {
+module.exports = function setupDatacenterMainModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('region', {
-    region: {
+  return sequelize.define('dc_principal', {
+    dc_principal: {
       type: Sequelize.INTEGER,
       allowNull: false
     },

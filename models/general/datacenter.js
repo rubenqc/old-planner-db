@@ -1,18 +1,22 @@
 'use strict'
 
 const Sequelize = require('sequelize')
-const setupDatabase = require('../lib/db')
+const setupDatabase = require('../../lib/db')
 
-module.exports = function setupClassModel (config) {
+module.exports = function setupDatacenterModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('clase', {
-    clase: {
+  return sequelize.define('datacenter', {
+    datacenter: {
       type: Sequelize.INTEGER,
       allowNull: false
     },
     nombre: {
       type: Sequelize.STRING,
+      allowNull: false
+    },
+    tipo: {
+      type: Sequelize.INTEGER,
       allowNull: false
     }
   })

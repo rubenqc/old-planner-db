@@ -1,13 +1,13 @@
 'use strict'
 
 const Sequelize = require('sequelize')
-const setupDatabase = require('../lib/db')
+const setupDatabase = require('../../lib/db')
 
-module.exports = function setupTypeModel (config) {
+module.exports = function setupRegionModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('tipo', {
-    tipo: {
+  return sequelize.define('region', {
+    region: {
       type: Sequelize.INTEGER,
       allowNull: false
     },

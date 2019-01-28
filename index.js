@@ -3,12 +3,12 @@
 const setupDatabase = require('./lib/db')
 const setupUsersModel = require('./models/users')
 const setupTrafficModel = require('./models/traffic')
-const setupDateModel = require('./models/date')
-const setupTypeModel = require('./models/type')
-const setupClassModel = require('./models/class')
-const setupRegionModel = require('./models/region')
-const setupDatacenterModel = require('./models/datacenter')
-const setupDatacenterMainModel = require('./models/datacenter_main')
+const setupDateModel = require('./models/general/date')
+const setupTypeModel = require('./models/general/type')
+const setupClassModel = require('./models/general/class')
+const setupRegionModel = require('./models/general/region')
+const setupDatacenterModel = require('./models/general/datacenter')
+const setupDatacenterMainModel = require('./models/general/datacenter_main')
 const defaults = require('defaults')
 
 module.exports = async function (config) {
@@ -63,6 +63,8 @@ module.exports = async function (config) {
 
   RegionModel.hasMany(TrafficModel)
   TrafficModel.belongsTo(RegionModel)
+
+  // Associations Parameters: TH, SAU, PDP
 
   await sequelize.authenticate()
 
