@@ -12,9 +12,9 @@ const setupRegionModel = require('./models/general/region')
 const setupDatacenterModel = require('./models/general/datacenter')
 const setupDatacenterMainModel = require('./models/general/datacenter_main')
 
-const setupPdpModel = require('./models/parameters/pdp')
-const setupSauModel = require('./models/parameters/sau')
-const setupThModel = require('./models/parameters/th')
+const setupPdpModel = require('./models/core-ps/pdp')
+const setupSauModel = require('./models/core-ps/sau')
+const setupThModel = require('./models/core-ps/th')
 
 const setupUthModel = require('./models/u2000/th')
 const setupUpdpModel = require('./models/u2000/pdp')
@@ -95,7 +95,7 @@ module.exports = async function (config) {
   RegionModel.hasMany(TrafficModel)
   TrafficModel.belongsTo(RegionModel)
 
-  // Associations Parameters: TH
+  // Associations core-ps: TH
   DateModel.hasMany(ThModel)
   ThModel.belongsTo(DateModel)
 
@@ -105,7 +105,7 @@ module.exports = async function (config) {
   RegionModel.hasMany(ThModel)
   ThModel.belongsTo(RegionModel)
 
-  // Associations Parameters: SAU
+  // Associations core-ps: SAU
   DateModel.hasMany(SauModel)
   SauModel.belongsTo(DateModel)
 
@@ -115,7 +115,7 @@ module.exports = async function (config) {
   RegionModel.hasMany(SauModel)
   SauModel.belongsTo(RegionModel)
 
-  // Associations Parameters: PDP
+  // Associations core-ps: PDP
   DateModel.hasMany(PdpModel)
   PdpModel.belongsTo(DateModel)
 
@@ -125,49 +125,49 @@ module.exports = async function (config) {
   RegionModel.hasMany(PdpModel)
   PdpModel.belongsTo(RegionModel)
 
-  // Associations Parameters U2000: TH
+  // Associations core-ps U2000: TH
   DateModel.hasMany(UthModel)
   UthModel.belongsTo(DateModel)
 
   ClassModel.hasMany(UthModel)
   UthModel.belongsTo(ClassModel)
 
-  // Associations Parameters U2000: SAU
+  // Associations core-ps U2000: SAU
   DateModel.hasMany(UsauModel)
   UsauModel.belongsTo(DateModel)
 
   ClassModel.hasMany(UsauModel)
   UsauModel.belongsTo(ClassModel)
 
-  // Associations Parameters U2000: PDP
+  // Associations core-ps U2000: PDP
   DateModel.hasMany(UpdpModel)
   UpdpModel.belongsTo(DateModel)
 
   ClassModel.hasMany(UpdpModel)
   UpdpModel.belongsTo(ClassModel)
 
-  // Associations Parameters Ratios: SAU/Usuario
+  // Associations core-ps Ratios: SAU/Usuario
   DateModel.hasMany(SauUsersModel)
   SauUsersModel.belongsTo(DateModel)
 
   ClassModel.hasMany(SauUsersModel)
   SauUsersModel.belongsTo(ClassModel)
 
-  // Associations Parameters Ratios: PDP/SAU
+  // Associations core-ps Ratios: PDP/SAU
   DateModel.hasMany(PdpSauModel)
   PdpSauModel.belongsTo(DateModel)
 
   ClassModel.hasMany(PdpSauModel)
   PdpSauModel.belongsTo(ClassModel)
 
-  // Associations Parameters Ratios: TH_FC/SAU
+  // Associations core-ps Ratios: TH_FC/SAU
   DateModel.hasMany(ThfcSauModel)
   ThfcSauModel.belongsTo(DateModel)
 
   ClassModel.hasMany(ThfcSauModel)
   ThfcSauModel.belongsTo(ClassModel)
 
-  // Associations Parameters Ratios: TH_FC/PDP
+  // Associations core-ps Ratios: TH_FC/PDP
   DateModel.hasMany(ThfcPdpModel)
   ThfcPdpModel.belongsTo(DateModel)
 

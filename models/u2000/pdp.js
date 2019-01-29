@@ -6,13 +6,13 @@ const setupDatabase = require('../../lib/db')
 module.exports = function setupUpdpModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('updp', {
+  return sequelize.define('pdp', {
     pdp: {
-      type: Sequelize.DOUBLE.UNSIGNED,
+      type: Sequelize.DOUBLE,
       allowNull: false
     },
     estado: {
-      type: Sequelize.INTEGER(1).UNSIGNED,
+      type: Sequelize.INTEGER,
       allowNull: false,
       defaultValue: 0
     }

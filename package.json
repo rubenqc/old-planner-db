@@ -1,33 +1,33 @@
 {
   "name": "iot-db",
   "version": "1.0.0",
-  "description": "A simple IoT Platform - DB Module",
+  "description": "Planner Entel",
   "main": "index.js",
   "scripts": {
-    "test": "SET DEBUG=iot-node:* && nyc --reporter=lcov ava tests/ --verbose",
+    "test": "DEBUG=planner:* nyc --reporter=lcov ava tests/ --verbose",
     "lint": "standard",
-    "setup": "SET DEBUG=iot-node:* && node setup.js"
+    "setup": "DEBUG=planner:* node setup.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rubenqc/app-iot.git"
+    "url": "git+https://github.com/rubenqc/planner-db.git"
   },
   "author": "Ruben QC",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rubenqc/app-iot/issues"
+    "url": "https://github.com/rubenqc/planner-db/issues"
   },
-  "homepage": "https://github.com/rubenqc/app-iot#readme",
+  "homepage": "https://github.com/rubenqc/planner-db#readme",
   "devDependencies": {
-    "ava": "^1.0.1",
+    "ava": "^1.2.0",
     "nyc": "^13.1.0",
     "proxyquire": "^2.1.0",
-    "sinon": "^7.2.2",
-    "sqlite3": "^4.0.4",
+    "sinon": "^7.2.3",
+    "sqlite3": "^4.0.6",
     "standard": "^12.0.1"
   },
   "dependencies": {
-    "chalk": "^2.4.1",
+    "chalk": "^2.4.2",
     "debug": "^4.1.1",
     "defaults": "^1.0.3",
     "inquirer": "^6.2.1",
