@@ -2,8 +2,9 @@
 
 const setupDatabase = require('./lib/db')
 
-const setupUsersModel = require('./models/users')
-const setupTrafficModel = require('./models/traffic')
+const setupUsersModel = require('./models/general/users')
+const setupTrafficModel = require('./models/general/traffic')
+const setupGbModel = require('./models/general/gb')
 
 const setupDateModel = require('./models/general/date')
 const setupTypeModel = require('./models/general/type')
@@ -45,6 +46,7 @@ module.exports = async function (config) {
 
   const UsersModel = setupUsersModel(config)
   const TrafficModel = setupTrafficModel(config)
+  const GbModel = setupGbModel(config)
 
   const DateModel = setupDateModel(config)
   const TypeModel = setupTypeModel(config)
@@ -94,6 +96,16 @@ module.exports = async function (config) {
 
   RegionModel.hasMany(TrafficModel)
   TrafficModel.belongsTo(RegionModel)
+
+  // Associations GbModel
+  DateModel.hasMany(GbModel)
+  GbModel.belongsTo(DateModel)
+
+  ClassModel.hasMany(GbModel)
+  GbModel.belongsTo(ClassModel)
+
+  RegionModel.hasMany(GbModel)
+  GbModel.belongsTo(RegionModel)
 
   // Associations core-ps: TH
   DateModel.hasMany(ThModel)
