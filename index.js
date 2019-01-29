@@ -2,6 +2,32 @@
 
 const setupDatabase = require('./lib/db')
 
+const setupUsers = require('./lib/general/users')
+const setupTraffic = require('./lib/general/traffic')
+const setupGb = require('./lib/general/gb')
+const setupCentralizedAnalysis = require('./lib/general/centralized_analysis')
+
+const setupDate = require('./lib/general/date')
+const setupType = require('./lib/general/type')
+const setupClass = require('./lib/general/class')
+const setupRegion = require('./lib/general/region')
+const setupDatacenter = require('./lib/general/datacenter')
+const setupDatacenterMain = require('./lib/general/datacenter_main')
+
+const setupPdp = require('./lib/core-ps/pdp')
+const setupSau = require('./lib/core-ps/sau')
+const setupTh = require('./lib/core-ps/th')
+
+const setupUth = require('./lib/u2000/th')
+const setupUpdp = require('./lib/u2000/pdp')
+const setupUsau = require('./lib/u2000/sau')
+
+const setupPdpSau = require('./lib/ratios/pdp_ sau')
+const setupSauUsers = require('./lib/ratios/sau_users')
+const setupThfcSau = require('./lib/ratios/thfc_sau')
+const setupThfcPdp = require('./lib/ratios/thfc_pdp')
+
+// Setup Models
 const setupUsersModel = require('./models/general/users')
 const setupTrafficModel = require('./models/general/traffic')
 const setupGbModel = require('./models/general/gb')
@@ -45,6 +71,7 @@ module.exports = async function (config) {
 
   const sequelize = setupDatabase(config)
 
+  // Models
   const UsersModel = setupUsersModel(config)
   const TrafficModel = setupTrafficModel(config)
   const GbModel = setupGbModel(config)
@@ -70,6 +97,7 @@ module.exports = async function (config) {
   const ThfcPdpModel = setupThfcPdpModel(config)
   const ThfcSauModel = setupThfcSauModel(config)
 
+  // Associations
   ClassModel.hasMany(TypeModel)
   TypeModel.belongsTo(ClassModel)
 
@@ -201,11 +229,55 @@ module.exports = async function (config) {
     await sequelize.sync({ force: true })
   }
 
-  // const Agent = setupAgent(AgentModel)
-  // const Metric = setupMetric(MetricModel, AgentModel)
+  const Users = setupUsers(UsersModel)
+  const Traffic = setupTraffic(TrafficModel)
+  const Gb = setupGb(GbModel)
+  const CentralizedAnalysis = setupCentralizedAnalysis(CentralizedAnalysisModel)
+
+  const DateFecha = setupDate(DateModel)
+  const Type = setupType(TypeModel)
+  const ClassClase = setupClass(ClassModel)
+  const Region = setupRegion(RegionModel)
+  const Datacenter = setupDatacenter(DatacenterModel)
+  const DatacenterMain = setupDatacenterMain(DatacenterMainModel)
+
+  const Th = setupTh(ThModel)
+  const Pdp = setupPdp(PdpModel)
+  const Sau = setupSau(SauModel)
+
+  const Uth = setupUth(UthModel)
+  const Usau = setupUsau(UsauModel)
+  const Updp = setupUpdp(UpdpModel)
+
+  const PdpSau = setupPdpSau(PdpSauModel)
+  const SauUsers = setupSauUsers(SauUsersModel)
+  const ThfcPdp = setupThfcPdp(ThfcPdpModel)
+  const ThfcSau = setupThfcSau(ThfcSauModel)
 
   return {
-    // Agent,
-    // Metric
+    Users,
+    Traffic,
+    Gb,
+    CentralizedAnalysis,
+
+    DateFecha,
+    Type,
+    ClassClase,
+    Region,
+    Datacenter,
+    DatacenterMain,
+
+    Th,
+    Pdp,
+    Sau,
+
+    Uth,
+    Usau,
+    Updp,
+
+    PdpSau,
+    SauUsers,
+    ThfcPdp,
+    ThfcSau
   }
 }
