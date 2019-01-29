@@ -5,6 +5,7 @@ const setupDatabase = require('./lib/db')
 const setupUsersModel = require('./models/general/users')
 const setupTrafficModel = require('./models/general/traffic')
 const setupGbModel = require('./models/general/gb')
+const setupCentralizedAnalysisModel = require('./models/general/centralized_analysis')
 
 const setupDateModel = require('./models/general/date')
 const setupTypeModel = require('./models/general/type')
@@ -47,6 +48,7 @@ module.exports = async function (config) {
   const UsersModel = setupUsersModel(config)
   const TrafficModel = setupTrafficModel(config)
   const GbModel = setupGbModel(config)
+  const CentralizedAnalysisModel = setupCentralizedAnalysisModel(config)
 
   const DateModel = setupDateModel(config)
   const TypeModel = setupTypeModel(config)
@@ -106,6 +108,13 @@ module.exports = async function (config) {
 
   RegionModel.hasMany(GbModel)
   GbModel.belongsTo(RegionModel)
+
+  // Associations CentralizedAnalysisModel
+  DateModel.hasMany(CentralizedAnalysisModel)
+  CentralizedAnalysisModel.belongsTo(DateModel)
+
+  ClassModel.hasMany(CentralizedAnalysisModel)
+  CentralizedAnalysisModel.belongsTo(ClassModel)
 
   // Associations core-ps: TH
   DateModel.hasMany(ThModel)
