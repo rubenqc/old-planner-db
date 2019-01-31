@@ -13,7 +13,8 @@ module.exports = function setupDateModel (config) {
     },
     factor_s: {
       type: Sequelize.DOUBLE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0
     },
     estado: {
       type: Sequelize.INTEGER,
