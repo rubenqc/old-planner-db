@@ -93,6 +93,7 @@ test.beforeEach(async () => {
     './models/general/gb': () => GbStub,
     './models/general/centralized_analysis': () => CentralizedAnalysisStub,
 
+    './models/general/date': () => DateStub,
     './models/general/type': () => TypeStub,
     './models/general/class': () => ClassStub,
     './models/general/region': () => RegionStub,
@@ -121,5 +122,24 @@ test.afterEach(() => {
 })
 
 test('Date', t => {
-  t.truthy(db.Date, 'Date service should exists.')
+  t.truthy(db.DateFecha, 'Date service should exists.')
+})
+
+test.serial('Setup', t => {
+    t.true(DateStub.hasMany.called, 'DateModel.hasMany was execute')
+    t.true(DateStub.hasMany.callCount === 14 , 'hasMany should be called 14 times')
+    t.true(DateStub.hasMany.calledWith(UsersStub), 'Argument needs should be the UsersModel')
+    t.true(DateStub.hasMany.calledWith(TrafficStub), 'Argument needs should be the TrafficModel')
+    t.true(DateStub.hasMany.calledWith(GbStub), 'Argument needs should be the GbModel')
+    t.true(DateStub.hasMany.calledWith(CentralizedAnalysisStub), 'Argument needs should be the CentralizedAnlysis')
+    t.true(DateStub.hasMany.calledWith(ThStub), 'Argument needs should be the ThModel')
+    t.true(DateStub.hasMany.calledWith(PdpStub), 'Argument needs should be the PdpModel')
+    t.true(DateStub.hasMany.calledWith(SauStub), 'Argument needs should be the SauModel')
+    t.true(DateStub.hasMany.calledWith(UthStub), 'Argument needs should be the UthModel')
+    t.true(DateStub.hasMany.calledWith(UpdpStub), 'Argument needs should be the UpdpModel')
+    t.true(DateStub.hasMany.calledWith(UsauStub), 'Argument needs should be the UsauModel')
+    t.true(DateStub.hasMany.calledWith(SauUsersStub), 'Argument needs should be the SauUsersModel')
+    t.true(DateStub.hasMany.calledWith(PdpSauStub), 'Argument needs should be the PspSauModel')
+    t.true(DateStub.hasMany.calledWith(ThfcPdpStub), 'Argument needs should be the ThfcPdpModel')
+    t.true(DateStub.hasMany.calledWith(ThfcSauStub), 'Argument needs should be the ThfcSauModel')
 })
