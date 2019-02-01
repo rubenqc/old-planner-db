@@ -5,8 +5,8 @@ const sinon = require('sinon')
 
 const proxyquire = require('proxyquire')
 
-const metricFixtures = require('./fixtures/metric')
-const agentFixtures = require('./fixtures/agent')
+const metricFixtures = require('./tests/fixtures/metric')
+const agentFixtures = require('./tests/fixtures/agent')
 
 let config = {
   logging: function () {}

@@ -4,7 +4,7 @@
   "description": "Planner Entel",
   "main": "index.js",
   "scripts": {
-    "test": "DEBUG=planner:* nyc --reporter=lcov ava tests/general/ --verbose",
+    "test": "DEBUG=planner:* nyc --reporter=lcov ava tests/ --verbose",
     "lint": "standard",
     "setup": "DEBUG=planner:* node setup.js"
   },

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for planner-db/models/general/centralized_analysis.js</title>
+    <title>Code coverage report for planner-db/tests/fixtures/date.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">planner-db/models/general</a> centralized_analysis.js
+      <a href="../../../index.html">All files</a> / <a href="index.html">planner-db/tests/fixtures</a> date.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/5</span>
+        <span class='fraction'>7/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,21 +30,21 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">85.71% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/5</span>
+        <span class='fraction'>6/7</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -77,58 +77,58 @@
 <a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
 &nbsp;
-const Sequelize = require('sequelize')
-const setupDatabase = require('../../lib/db')
+const date = {
+  id: 1,
+  fecha: '2018-05-01',
+  createAt: Date(),
+  updateAt: Date()
+}
 &nbsp;
-module.exports = function <span class="fstat-no" title="function not covered" >setupCentralizedAnalysisModel </span>(config) {
-  const sequelize = <span class="cstat-no" title="statement not covered" >setupDatabase(config)</span>
+const dates = [
+  date,
+  extend(date, { id: 2, fecha: '2018-06-01' }),
+  extend(date, { id: 3, fecha: '2018-07-01' }),
+  extend(date, { id: 4, fecha: '2018-08-01' }),
+  extend(date, { id: 5, fecha: '2018-09-01' })
+]
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return sequelize.define('analisis_centralizado', {</span>
-    th: {
-      type: Sequelize.DOUBLE,
-      allowNull: false
-    },
-    sau: {
-      type: Sequelize.INTEGER.UNSIGNED,
-      allowNull: false
-    },
-    pdp: {
-      type: Sequelize.INTEGER.UNSIGNED,
-      allowNull: false
-    },
-    estado: {
-      type: Sequelize.INTEGER.UNSIGNED,
-      allowNull: false,
-      defaultValue: 0
-    }
-  })
+function extend (obj, values) {
+  const clone = Object.assign({}, obj)
+  return Object.assign(clone, values)
+}
+&nbsp;
+module.exports = {
+  single: date,
+  all: dates,
+  findByDate: fecha =&gt; dates.filter(a =&gt; a.fecha === fecha).shift(),
+  findByRange: <span class="fstat-no" title="function not covered" >(s</span>tartDate, finalDate) =&gt; <span class="cstat-no" title="statement not covered" >dates.filter</span>
 }
 &nbsp;</pre></td></tr>
 </table></pre>

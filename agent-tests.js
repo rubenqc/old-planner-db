@@ -4,7 +4,7 @@ const test = require('ava')
 const sinon = require('sinon')
 const proxyquire = require('proxyquire')
 
-const agentFixtures = require('./fixtures/agent')
+const agentFixtures = require('./tests/fixtures/agent')
 
 let config = {
   logging: function () {}
