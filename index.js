@@ -235,7 +235,7 @@ module.exports = async function (config) {
   const CentralizedAnalysis = setupCentralizedAnalysis(CentralizedAnalysisModel)
 
   const DateFecha = setupDate(DateModel)
-  const Type = setupType(TypeModel)
+  const Type = setupType(TypeModel, ClassModel)
   const ClassClase = setupClass(ClassModel)
   const Region = setupRegion(RegionModel)
   const Datacenter = setupDatacenter(DatacenterModel)

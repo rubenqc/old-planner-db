@@ -7,15 +7,16 @@ const single = {
 
 const classes = [
   single,
-  extend(single, { class: 2, nombre: 'móvil' })
+  extend(single, { clase: 2, nombre: 'móvil' })
 ]
 
 function extend (obj, values) {
   const clone = Object.assign({}, obj)
-  return Object.assign(values, clone)
+  return Object.assign(clone, values)
 }
 
 module.exports = {
   single,
-  findAll: classes
+  findAll: classes,
+  findByClass: id => classes.filter(a => a.clase === id).shift()
 }

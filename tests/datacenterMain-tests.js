@@ -116,9 +116,9 @@ test.beforeEach(async () => {
     }
   }))
 
-   // DatacenterMain#Model findAll Stub
-   DatacenterMainStub.findAll = sandbox.stub()
-   DatacenterMainStub.findAll.withArgs().returns(Promise.resolve(datacenterMainFixtures.findAll))
+  // DatacenterMain#Model findAll Stub
+  DatacenterMainStub.findAll = sandbox.stub()
+  DatacenterMainStub.findAll.withArgs().returns(Promise.resolve(datacenterMainFixtures.findAll))
 
   const setupDatabase = proxyquire('../', {
     './models/general/users': () => UsersStub,
@@ -193,11 +193,11 @@ test.serial('DatacenterMain#createOrUpdate - new', async t => {
 })
 
 test.serial('DatacenterMain#findAll', async t => {
-    let datacentersMain = await db.DatacenterMain.findAll()
-  
-    t.true(DatacenterMainStub.findAll.called, 'findAll should be called on model')
-    t.true(DatacenterMainStub.findAll.calledOnce, 'findAll should be called once')
-    t.true(DatacenterMainStub.findAll.calledWith(), 'findAll should be called without args')
-  
-    t.deepEqual(datacentersMain, datacenterMainFixtures.findAll, 'datacentersMain should be the same')
-  })
+  let datacentersMain = await db.DatacenterMain.findAll()
+
+  t.true(DatacenterMainStub.findAll.called, 'findAll should be called on model')
+  t.true(DatacenterMainStub.findAll.calledOnce, 'findAll should be called once')
+  t.true(DatacenterMainStub.findAll.calledWith(), 'findAll should be called without args')
+
+  t.deepEqual(datacentersMain, datacenterMainFixtures.findAll, 'datacentersMain should be the same')
+})

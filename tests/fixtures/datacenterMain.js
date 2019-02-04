@@ -13,7 +13,7 @@ const datacentersMain = [
 
 function extend (obj, values) {
   const clone = Object.assign({}, obj)
-  return Object.assign(values, clone)
+  return Object.assign(clone, values)
 }
 
 module.exports = {
