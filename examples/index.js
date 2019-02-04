@@ -20,8 +20,6 @@ async function run () {
 
   console.log('--date--')
   console.log(date)
-
-  
 }
 
 function handleFatalError (err) {

@@ -93,14 +93,13 @@ let dateArgs = {
 }
 let newDate = {
   id: 8,
-  fecha: '2017-06-07',
+  fecha: '2017-06-07'
 }
 
 test.beforeEach(async () => {
   sandbox = sinon.createSandbox()
   DateStub = {
-    hasMany: sandbox.spy(),
-    beforeEach: sandbox.spy()
+    hasMany: sandbox.spy()
   }
 
   // Date#Model findOne Stub
@@ -111,15 +110,15 @@ test.beforeEach(async () => {
   DateStub.update = sandbox.stub()
   DateStub.update.withArgs(single, dateArgs).returns(Promise.resolve(single))
 
-  //Date#Model create Stub
+  // Date#Model create Stub
   DateStub.create = sandbox.stub()
   DateStub.create.withArgs(newDate).returns(Promise.resolve({
-    toJSON() {
+    toJSON () {
       return newDate
     }
   }))
 
-  //Date#Model findAll Stub
+  // Date#Model findAll Stub
   DateStub.findAll = sandbox.stub()
   DateStub.findAll.withArgs().returns(Promise.resolve(dateFixtures.all))
 

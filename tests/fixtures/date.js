@@ -23,6 +23,5 @@ function extend (obj, values) {
 module.exports = {
   single: date,
   all: dates,
-  findByDate: fecha => dates.filter(a => a.fecha === fecha).shift(),
-  findByRange: (startDate, finalDate) => dates.filter
+  findByDate: fecha => dates.filter(a => a.fecha === fecha).shift()
 }
