@@ -17,7 +17,7 @@ const dates = [
 
 function extend (obj, values) {
   const clone = Object.assign({}, obj)
-  return Object.assign(clone, values)
+  return Object.assign(values, clone)
 }
 
 module.exports = {
