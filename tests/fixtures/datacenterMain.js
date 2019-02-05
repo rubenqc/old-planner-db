@@ -18,5 +18,6 @@ function extend (obj, values) {
 
 module.exports = {
   single,
-  findAll: datacentersMain
+  findAll: datacentersMain,
+  findByDatacenterMain: datacenterMain => datacentersMain.filter(t => t.dc_principal === datacenterMain).shift()
 }

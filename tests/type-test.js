@@ -81,13 +81,14 @@ let ThfcPdpStub = {
   belongsTo: sinon.spy()
 }
 
+// Argumentos para la clase
 let classId = 1
 let condArgs = {
   where: {
     clase: classId
   }
 }
-
+// Argumentos para el tipo
 let newType = {
   tipo: 9,
   nombre: 'no-existes'
@@ -95,6 +96,13 @@ let newType = {
 let newCondArgs = {
   where: {
     tipo: newType.tipo
+  }
+}
+
+let newClassId = 3
+let newCondClass = {
+  where: {
+    clase: newClassId
   }
 }
 
@@ -111,12 +119,13 @@ test.beforeEach(async () => {
   // Class#Model findOne Stub
   ClassStub.findOne = sandbox.stub()
   ClassStub.findOne.withArgs(condArgs).returns(Promise.resolve(classFixtures.findByClass(classId)))
+  ClassStub.findOne.withArgs(newCondClass).returns(Promise.resolve(classFixtures.findByClass(newClassId)))
   // Type#Model findOne Stub
   TypeStub.findOne = sandbox.stub()
-  TypeStub.findOne.withArgs({where: {tipo: typeFixtures.single.tipo}}).returns(Promise.resolve(typeFixtures.single))
+  TypeStub.findOne.withArgs({ where: { tipo: typeFixtures.single.tipo } }).returns(Promise.resolve(typeFixtures.single))
   // Type#Model update Stub
   TypeStub.update = sandbox.stub()
-  TypeStub.update.withArgs(typeFixtures.single, condArgs).returns(Promise.resolve(typeFixtures.single))
+  TypeStub.update.withArgs(typeFixtures.single, { where: { tipo: typeFixtures.single.tipo } }).returns(Promise.resolve(typeFixtures.single))
   // Type#Model create Stub
   TypeStub.create = sandbox.stub()
   TypeStub.create.withArgs(newType).returns(Promise.resolve({
@@ -124,6 +133,9 @@ test.beforeEach(async () => {
       return newType
     }
   }))
+  // Class#Model findAll Stub
+  TypeStub.findAll = sandbox.stub()
+  TypeStub.findAll.withArgs().returns(Promise.resolve(typeFixtures.findAll))
 
   const setupDatabase = proxyquire('../', {
     './models/general/users': () => UsersStub,
@@ -175,27 +187,25 @@ test('Setup', t => {
 
 test.serial('Type#createOrUpdate - exist', async t => {
   const type = await db.Type.createOrUpdate(typeFixtures.single, classId)
-  
+
   t.true(ClassStub.findOne.called, 'ClassModel.findOne was execute')
-  t.true(ClassStub.findOne.calledOnce,' findOne should be called once')
+  t.true(ClassStub.findOne.calledOnce, ' findOne should be called once')
   t.true(ClassStub.findOne.calledWith(condArgs), 'findOne should be called with condArgs args')
   t.true(TypeStub.findOne.called, 'TypeModel.findOne was execute')
-  t.true(TypeStub.findOne.calledOnce, 'findOne should be called once')
-  t.true(TypeStub.findOne.calledWith({ where: { tipo: typeFixtures.single.tipo} }), 'findOne should be called with tipo Args')
+  t.true(TypeStub.findOne.calledTwice, 'findOne should be called twice')
+  t.true(TypeStub.findOne.calledWith({ where: { tipo: typeFixtures.single.tipo } }), 'findOne should be called with tipo Args')
   t.true(TypeStub.update.called, 'update should be called')
   t.true(TypeStub.update.calledOnce, 'update should be called once')
-  t.true(TypeStub.update.calledWith(typeFixtures.single, { where: { tipo: typeFixtures.single.tipo} } ), 'update should be called with single, cond Args')
-
+  t.true(TypeStub.update.calledWith(typeFixtures.single, { where: { tipo: typeFixtures.single.tipo } }), 'update should be called with single, cond Args')
 
   t.deepEqual(type, typeFixtures.single, 'should be the same')
 })
-
 
 test.serial('Type#createOrUpdate - new', async t => {
   const type = await db.Type.createOrUpdate(newType, classId)
 
   t.true(ClassStub.findOne.called, 'ClassModel.findOne was execute')
-  t.true(ClassStub.findOne.calledOnce,' findOne should be called once')
+  t.true(ClassStub.findOne.calledOnce, ' findOne should be called once')
   t.true(ClassStub.findOne.calledWith(condArgs), 'findOne should be called with condArgs args')
   t.true(TypeStub.findOne.called, 'findOne should be called')
   t.true(TypeStub.findOne.calledOnce, 'findOne should be called once')
@@ -205,4 +215,24 @@ test.serial('Type#createOrUpdate - new', async t => {
   t.true(TypeStub.create.calledWith(newType), 'create should be called with newClass args')
 
   t.deepEqual(type, newType, 'should be the same')
+})
+
+test.serial('Type#createOrUpdate - class no exist', async t => {
+  const type = await db.Type.createOrUpdate(newType, newClassId)
+
+  t.true(ClassStub.findOne.called, 'ClassModel.findOne was execute')
+  t.true(ClassStub.findOne.calledOnce, ' findOne should be called once')
+  t.true(ClassStub.findOne.calledWith(newCondClass), 'findOne should be called with condArgs args')
+
+  t.deepEqual(type, classFixtures.findByClass(newClassId), 'should be the same')
+})
+
+test.serial('Type#findAll', async t => {
+  let types = await db.Type.findAll()
+
+  t.true(TypeStub.findAll.called, 'findAll should be called')
+  t.true(TypeStub.findAll.calledOnce, 'findAll should be called once')
+  t.true(TypeStub.findAll.calledWith(), 'findAll should be called without any args')
+
+  t.deepEqual(types, typeFixtures.findAll, 'Classes should be the same')
 })

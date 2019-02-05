@@ -14,6 +14,10 @@ module.exports = function setupDatacenterMainModel (config) {
     nombre: {
       type: Sequelize.STRING,
       allowNull: false
+    },
+    tipo: {
+      type: Sequelize.INTEGER,
+      allowNull: false
     }
   })
 }

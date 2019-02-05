@@ -23,5 +23,5 @@ function extend (obj, values) {
 
 module.exports = {
   single,
-  types,
+  types
 }

@@ -238,7 +238,7 @@ module.exports = async function (config) {
   const Type = setupType(TypeModel, ClassModel)
   const ClassClase = setupClass(ClassModel)
   const Region = setupRegion(RegionModel)
-  const Datacenter = setupDatacenter(DatacenterModel)
+  const Datacenter = setupDatacenter(DatacenterModel, DatacenterMainModel)
   const DatacenterMain = setupDatacenterMain(DatacenterMainModel)
 
   const Th = setupTh(ThModel)
