@@ -23,5 +23,6 @@ function extend (obj, values) {
 
 module.exports = {
   single,
-  types
+  types,
+  findByClassId: clase => types.filter(a => a.claseId === clase)
 }

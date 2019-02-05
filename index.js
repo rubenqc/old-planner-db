@@ -237,7 +237,7 @@ module.exports = async function (config) {
   const DateFecha = setupDate(DateModel)
   const Type = setupType(TypeModel, ClassModel)
   const ClassClase = setupClass(ClassModel)
-  const Region = setupRegion(RegionModel)
+  const Region = setupRegion(RegionModel, DatacenterModel)
   const Datacenter = setupDatacenter(DatacenterModel, DatacenterMainModel)
   const DatacenterMain = setupDatacenterMain(DatacenterMainModel)
 

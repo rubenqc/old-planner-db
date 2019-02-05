@@ -136,6 +136,18 @@ test.beforeEach(async () => {
   // Class#Model findAll Stub
   DatacenterStub.findAll = sandbox.stub()
   DatacenterStub.findAll.withArgs().returns(Promise.resolve(datacenterFixtures.findAll))
+  DatacenterStub.findAll.withArgs({
+    attributes: ['datacenter', 'nombre'],
+    group: ['datacenter'],
+    include: [{
+      attributes: [],
+      model: DatacenterMainStub,
+      where: {
+        dc_principal: datacenterMainId
+      }
+    }],
+    raw: true
+  }).returns(Promise.resolve(datacenterFixtures.findByDatacenterMainId(datacenterMainId)))
 
   const setupDatabase = proxyquire('../', {
     './models/general/users': () => UsersStub,
@@ -176,12 +188,12 @@ test('Datacenter', t => {
 })
 
 test('Setup', t => {
-  t.true(DatacenterStub.hasMany.called, 'TypeModel.hasMany was execute')
+  t.true(DatacenterStub.hasMany.called, 'DatacenterModel.hasMany was execute')
   t.true(DatacenterStub.hasMany.calledOnce, 'hasMany should be called once')
   t.true(DatacenterStub.hasMany.calledWith(RegionStub), 'Argument needs should be the RegionModel args')
-  t.true(DatacenterStub.belongsTo.called, 'TypeModel.belongsTo was executed')
+  t.true(DatacenterStub.belongsTo.called, 'DatacenterModel.belongsTo was executed')
   t.true(DatacenterStub.belongsTo.calledOnce, 'belongsTo should be called once')
-  t.true(DatacenterStub.belongsTo.calledWith(DatacenterMainStub), 'TypeModel.belongsTo should be called with DatacenterMainModel args')
+  t.true(DatacenterStub.belongsTo.calledWith(DatacenterMainStub), 'DatacenterModel.belongsTo should be called with DatacenterMainModel args')
 })
 
 test.serial('Datacenter#createOrUpdate - exist', async t => {
@@ -233,4 +245,12 @@ test.serial('Datacenter#findAll', async t => {
   t.true(DatacenterStub.findAll.calledWith(), 'findAll should be called without any args')
 
   t.deepEqual(datacenters, datacenterFixtures.findAll, 'Classes should be the same')
+})
+
+test.serial('Datacenter#findByDatacenterMain', async t => {
+  let datacenters = await db.Datacenter.findByDatacenterMain(datacenterMainId)
+  t.true(DatacenterStub.findAll.called, 'findAll should be called')
+  t.true(DatacenterStub.findAll.calledOnce, 'findAll should be called once')
+
+  t.deepEqual(datacenters, datacenterFixtures.findByDatacenterMainId(datacenterMainId), 'should be the same')
 })

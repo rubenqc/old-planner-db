@@ -133,9 +133,21 @@ test.beforeEach(async () => {
       return newType
     }
   }))
-  // Class#Model findAll Stub
+  // Type#Model findAll Stub
   TypeStub.findAll = sandbox.stub()
   TypeStub.findAll.withArgs().returns(Promise.resolve(typeFixtures.findAll))
+  TypeStub.findAll.withArgs({
+    attributes: ['tipo', 'nombre'],
+    group: ['tipo'],
+    include: [{
+      attributes: [],
+      model: ClassStub,
+      where: {
+        clase: classId
+      }
+    }],
+    raw: true
+  }).returns(Promise.resolve(typeFixtures.findByClassId(classId)))
 
   const setupDatabase = proxyquire('../', {
     './models/general/users': () => UsersStub,
@@ -235,4 +247,13 @@ test.serial('Type#findAll', async t => {
   t.true(TypeStub.findAll.calledWith(), 'findAll should be called without any args')
 
   t.deepEqual(types, typeFixtures.findAll, 'Classes should be the same')
+})
+
+test.serial('Type#findByClass', async t => {
+  let types = await db.Type.findByClass(classId)
+
+  t.true(TypeStub.findAll.called, 'findAll should be called')
+  t.true(TypeStub.findAll.calledOnce, 'findAll should be called once')
+
+  t.deepEqual(types, typeFixtures.findByClassId(classId), 'types should be the same')
 })
