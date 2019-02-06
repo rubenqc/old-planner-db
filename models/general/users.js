@@ -12,7 +12,7 @@ module.exports = function setupUsersModel (config) {
       allowNull: false
     },
     estado: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.INTEGER(6).ZEROFILL,
       allowNull: false
     }
   })

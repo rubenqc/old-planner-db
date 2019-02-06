@@ -243,8 +243,8 @@ test.serial('Region#findAll', async t => {
 
 test.serial('Region#findByDatacenterMain', async t => {
   let datacenters = await db.Region.findByDatacenter(datacenterId)
-//   t.true(RegionStub.findAll.called, 'findAll should be called')
-//   t.true(RegionStub.findAll.calledOnce, 'findAll should be called once')
+  //   t.true(RegionStub.findAll.called, 'findAll should be called')
+  //   t.true(RegionStub.findAll.calledOnce, 'findAll should be called once')
 
   t.deepEqual(datacenters, regionFixtures.findByDatacenterId(datacenterId), 'should be the same')
 })

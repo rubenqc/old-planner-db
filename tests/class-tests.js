@@ -165,7 +165,9 @@ test('Class', t => {
 
 test('Setup', t => {
   t.true(ClassStub.hasMany.called, 'ClassModel.hasMany was executed')
-  t.true(ClassStub.hasMany.callCount === 13, 'hasMany should be called 13 times')
+  t.true(ClassStub.hasMany.callCount === 15, 'hasMany should be called 13 times')
+  t.true(ClassStub.hasMany.calledWith(UsersStub), 'Argument needs should be UsersModel')
+  t.true(ClassStub.hasMany.calledWith(TrafficStub), 'Argument needs should be TrafficModel')
   t.true(ClassStub.hasMany.calledWith(TypeStub), 'Argument needs should be TypeModel')
   t.true(ClassStub.hasMany.calledWith(GbStub), 'Argument needs should be GbModel')
   t.true(ClassStub.hasMany.calledWith(CentralizedAnalysisStub), 'Argument needs should be CentralizedAnalysisModel')

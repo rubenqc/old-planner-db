@@ -22,5 +22,5 @@ module.exports = {
   single,
   findAll: datacenters,
   findByDatacenterMainId: datacenterMainId => datacenters.filter(a => a.dc_principalId === datacenterMainId),
-  findByDatacenterId: datacenterId => datacenters.filter(a => a.datacenter === datacenterId) 
+  findByDatacenterId: datacenterId => datacenters.filter(a => a.datacenter === datacenterId)
 }

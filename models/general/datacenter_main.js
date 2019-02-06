@@ -6,7 +6,7 @@ const setupDatabase = require('../../lib/db')
 module.exports = function setupDatacenterMainModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('dc_principal', {
+  return sequelize.define('dc_principales', {
     dc_principal: {
       type: Sequelize.INTEGER,
       allowNull: false

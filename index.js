@@ -114,6 +114,9 @@ module.exports = async function (config) {
   TypeModel.hasMany(UsersModel)
   UsersModel.belongsTo(TypeModel)
 
+  ClassModel.hasMany(UsersModel)
+  UsersModel.belongsTo(ClassModel)
+
   RegionModel.hasMany(UsersModel)
   UsersModel.belongsTo(RegionModel)
 
@@ -123,6 +126,9 @@ module.exports = async function (config) {
 
   TypeModel.hasMany(TrafficModel)
   TrafficModel.belongsTo(TypeModel)
+
+  ClassModel.hasMany(TrafficModel)
+  TrafficModel.belongsTo(ClassModel)
 
   RegionModel.hasMany(TrafficModel)
   TrafficModel.belongsTo(RegionModel)
