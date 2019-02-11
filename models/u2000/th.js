@@ -6,9 +6,9 @@ const setupDatabase = require('../../lib/db')
 module.exports = function setupUthModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('th', {
+  return sequelize.define('uth', {
     th: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {

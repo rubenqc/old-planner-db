@@ -6,9 +6,9 @@ const setupDatabase = require('../../lib/db')
 module.exports = function setupUsauModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('sau', {
+  return sequelize.define('usau', {
     sau: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {

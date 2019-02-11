@@ -6,9 +6,9 @@ const setupDatabase = require('../../lib/db')
 module.exports = function setupUpdpModel (config) {
   const sequelize = setupDatabase(config)
 
-  return sequelize.define('pdp', {
+  return sequelize.define('updp', {
     pdp: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {

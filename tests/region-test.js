@@ -87,10 +87,10 @@ let condDatacenterArgs = {
   }
 }
 
-let newDatacenterId = 15
-let condNewDatacenter = {
-  where: { datacenter: newDatacenterId }
-}
+// let newDatacenterId = 15
+// let condNewDatacenter = {
+//   where: { datacenter: newDatacenterId }
+// }
 
 let regionId = regionFixtures.single.region
 let condRegionArgs = {

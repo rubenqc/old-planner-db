@@ -8,19 +8,19 @@ module.exports = function setupCentralizedAnalysisModel (config) {
 
   return sequelize.define('analisis_centralizado', {
     th: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     sau: {
-      type: Sequelize.INTEGER.UNSIGNED,
+      type: Sequelize.STRING,
       allowNull: false
     },
     pdp: {
-      type: Sequelize.INTEGER.UNSIGNED,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {
-      type: Sequelize.INTEGER.UNSIGNED,
+      type: Sequelize.INTEGER(6).UNSIGNED.ZEROFILL,
       allowNull: false,
       defaultValue: 0
     }

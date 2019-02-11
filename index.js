@@ -114,9 +114,6 @@ module.exports = async function (config) {
   TypeModel.hasMany(UsersModel)
   UsersModel.belongsTo(TypeModel)
 
-  ClassModel.hasMany(UsersModel)
-  UsersModel.belongsTo(ClassModel)
-
   RegionModel.hasMany(UsersModel)
   UsersModel.belongsTo(RegionModel)
 
@@ -126,9 +123,6 @@ module.exports = async function (config) {
 
   TypeModel.hasMany(TrafficModel)
   TrafficModel.belongsTo(TypeModel)
-
-  ClassModel.hasMany(TrafficModel)
-  TrafficModel.belongsTo(ClassModel)
 
   RegionModel.hasMany(TrafficModel)
   TrafficModel.belongsTo(RegionModel)
@@ -235,10 +229,10 @@ module.exports = async function (config) {
     await sequelize.sync({ force: true })
   }
 
-  const Users = setupUsers(UsersModel)
-  const Traffic = setupTraffic(TrafficModel)
-  const Gb = setupGb(GbModel)
-  const CentralizedAnalysis = setupCentralizedAnalysis(CentralizedAnalysisModel)
+  const Users = setupUsers(UsersModel, DateModel, TypeModel)
+  const Traffic = setupTraffic(TrafficModel, DateModel, TypeModel, RegionModel)
+  const Gb = setupGb(GbModel, DateModel, ClassModel, RegionModel)
+  const CentralizedAnalysis = setupCentralizedAnalysis(CentralizedAnalysisModel, DateModel, ClassModel)
 
   const DateFecha = setupDate(DateModel)
   const Type = setupType(TypeModel, ClassModel)
@@ -247,12 +241,12 @@ module.exports = async function (config) {
   const Datacenter = setupDatacenter(DatacenterModel, DatacenterMainModel)
   const DatacenterMain = setupDatacenterMain(DatacenterMainModel)
 
-  const Th = setupTh(ThModel)
-  const Pdp = setupPdp(PdpModel)
-  const Sau = setupSau(SauModel)
+  const Th = setupTh(ThModel, DateModel, ClassModel, RegionModel)
+  const Pdp = setupPdp(PdpModel, DateModel, ClassModel, RegionModel)
+  const Sau = setupSau(SauModel, DateModel, ClassModel, RegionModel)
 
-  const Uth = setupUth(UthModel)
-  const Usau = setupUsau(UsauModel)
+  const Uth = setupUth(UthModel, DateModel, ClassModel)
+  const Usau = setupUsau(UsauModel, DateModel, ClassModel)
   const Updp = setupUpdp(UpdpModel)
 
   const PdpSau = setupPdpSau(PdpSauModel)

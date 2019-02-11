@@ -8,7 +8,7 @@ module.exports = function setupThModel (config) {
 
   return sequelize.define('th', {
     th: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {

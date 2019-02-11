@@ -8,11 +8,11 @@ module.exports = function setupGbModel (config) {
 
   return sequelize.define('gb', {
     gb: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.INTEGER(6).UNSIGNED.ZEROFILL,
       allowNull: false
     }
   })
