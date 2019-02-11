@@ -8,11 +8,11 @@ module.exports = function setupThfcPdpModel (config) {
 
   return sequelize.define('thfc_pdp', {
     thfc_pdp: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.INTEGER(6).UNSIGNED.ZEROFILL,
       allowNull: false,
       defaultValue: 0
     }

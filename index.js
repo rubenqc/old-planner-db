@@ -247,12 +247,12 @@ module.exports = async function (config) {
 
   const Uth = setupUth(UthModel, DateModel, ClassModel)
   const Usau = setupUsau(UsauModel, DateModel, ClassModel)
-  const Updp = setupUpdp(UpdpModel)
+  const Updp = setupUpdp(UpdpModel, DateModel, ClassModel)
 
-  const PdpSau = setupPdpSau(PdpSauModel)
-  const SauUsers = setupSauUsers(SauUsersModel)
-  const ThfcPdp = setupThfcPdp(ThfcPdpModel)
-  const ThfcSau = setupThfcSau(ThfcSauModel)
+  const PdpSau = setupPdpSau(PdpSauModel, DateModel, ClassModel)
+  const SauUsers = setupSauUsers(SauUsersModel, DateModel, ClassModel)
+  const ThfcPdp = setupThfcPdp(ThfcPdpModel, DateModel, ClassModel)
+  const ThfcSau = setupThfcSau(ThfcSauModel, DateModel, ClassModel)
 
   return {
     Users,

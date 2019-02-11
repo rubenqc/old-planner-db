@@ -8,11 +8,11 @@ module.exports = function setupPdpSauModel (config) {
 
   return sequelize.define('pdp_sau', {
     pdp_sau: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.INTEGER(6).UNSIGNED.ZEROFILL,
       allowNull: false,
       defaultValue: 0
     }

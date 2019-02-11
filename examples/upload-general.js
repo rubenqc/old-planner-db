@@ -12,7 +12,7 @@ async function run () {
     operatorsAliases: false
   }
 
-  const { DateFecha, ClassClase, Type, Region, Datacenter, DatacenterMain, Users, Traffic, Gb, CentralizedAnalysis, Th, Sau, Pdp, Uth, Usau, Updp } = await db(config).catch(handleFatalError)
+  const { DateFecha, ClassClase, Type, Region, Datacenter, DatacenterMain, Users, Traffic, Gb, CentralizedAnalysis, Th, Sau, Pdp, Uth, Usau, Updp, PdpSau, SauUsers, ThfcPdp, ThfcSau } = await db(config).catch(handleFatalError)
 
   // generating dates
   const startDate = new Date('2017-01-02')
@@ -258,6 +258,76 @@ async function run () {
   const rangeUsaus = await Usau.findByRange('2018-05-01', '2018-09-01', 2, 0).catch(handleFatalError)
   console.log('--rangeUsaus--')
   console.log(rangeUsaus)
+
+  // U2000 PDP
+  const updp = await Updp.createOrUpdate({ pdp: 1234567812346, estado: 0 }, '2018-05-01', 2).catch(handleFatalError)
+  const updp2 = await Updp.createOrUpdate({ pdp: 78945612322465, estado: 0 }, '2018-09-01', 2).catch(handleFatalError)
+  console.log('--create updps--')
+  console.log(updp, updp2)
+
+  const updps = await Updp.findAll().catch(handleFatalError)
+  console.log('--findAll updps--')
+  console.log(updps)
+
+  const rangeUpdps = await Updp.findByRange('2018-05-01', '2018-09-01', 2, 0).catch(handleFatalError)
+  console.log('--rangeUpdps--')
+  console.log(rangeUpdps)
+
+  // RATIOS PDP/SAU
+  const pdpsau = await PdpSau.createOrUpdate({ pdp_sau: 1234567812346, estado: 0 }, '2018-05-01', 2).catch(handleFatalError)
+  const pdpsau2 = await PdpSau.createOrUpdate({ pdp_sau: 78945612322465, estado: 0 }, '2018-09-01', 2).catch(handleFatalError)
+  console.log('--create pdpsau7s--')
+  console.log(pdpsau, pdpsau2)
+
+  const pdpsaus = await PdpSau.findAll().catch(handleFatalError)
+  console.log('--findAll pdpsaus--')
+  console.log(pdpsaus)
+
+  const rangePdpSaus = await PdpSau.findByRange('2018-05-01', '2018-09-01', 2, 0).catch(handleFatalError)
+  console.log('--rangePdpSaus--')
+  console.log(rangePdpSaus)
+
+  // RATIOS SAU/USERS
+  const sauusers = await SauUsers.createOrUpdate({ sau_usuarios: 1234567812346, estado: 0 }, '2018-05-01', 2).catch(handleFatalError)
+  const sauusers2 = await SauUsers.createOrUpdate({ sau_usuarios: 78945612322465, estado: 0 }, '2018-09-01', 2).catch(handleFatalError)
+  console.log('--create sauusers7s--')
+  console.log(sauusers, sauusers2)
+
+  const sauuserss = await SauUsers.findAll().catch(handleFatalError)
+  console.log('--findAll sauuserss--')
+  console.log(sauuserss)
+
+  const rangeSauUserss = await SauUsers.findByRange('2018-05-01', '2018-09-01', 2, 0).catch(handleFatalError)
+  console.log('--rangesauuserss--')
+  console.log(rangeSauUserss)
+
+  // RATIOS THFC/PDPS
+  const thfcpdp = await ThfcPdp.createOrUpdate({ thfc_pdp: 1234567812346, estado: 0 }, '2018-05-01', 2).catch(handleFatalError)
+  const thfcpdp2 = await ThfcPdp.createOrUpdate({ thfc_pdp: 78945612322465, estado: 0 }, '2018-09-01', 2).catch(handleFatalError)
+  console.log('--create thfcpdp7s--')
+  console.log(thfcpdp, thfcpdp2)
+
+  const thfcpdps = await ThfcPdp.findAll().catch(handleFatalError)
+  console.log('--findAll thfcpdps--')
+  console.log(thfcpdps)
+
+  const rangeThfcPdps = await ThfcPdp.findByRange('2018-05-01', '2018-09-01', 2, 0).catch(handleFatalError)
+  console.log('--rangethfcpdps--')
+  console.log(rangeThfcPdps)
+
+  // RATIOS THFC/SAUS
+  const thfcsau = await ThfcSau.createOrUpdate({ thfc_sau: 1234567812346, estado: 0 }, '2018-05-01', 2).catch(handleFatalError)
+  const thfcsau2 = await ThfcSau.createOrUpdate({ thfc_sau: 78945612322465, estado: 0 }, '2018-09-01', 2).catch(handleFatalError)
+  console.log('--create thfcsau7s--')
+  console.log(thfcsau, thfcsau2)
+
+  const thfcsaus = await ThfcSau.findAll().catch(handleFatalError)
+  console.log('--findAll thfcsaus--')
+  console.log(thfcsaus)
+
+  const rangeThfcSaus = await ThfcSau.findByRange('2018-05-01', '2018-09-01', 2, 0).catch(handleFatalError)
+  console.log('--rangethfcsaus--')
+  console.log(rangeThfcSaus)
 
   process.exit(0)
 }

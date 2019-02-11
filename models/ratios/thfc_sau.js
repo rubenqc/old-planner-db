@@ -8,11 +8,11 @@ module.exports = function setupThfcSauModel (config) {
 
   return sequelize.define('thfc_sau', {
     thfc_sau: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.INTEGER(6).UNSIGNED.ZEROFILL,
       allowNull: false,
       defaulValue: 0
     }

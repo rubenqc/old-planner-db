@@ -8,11 +8,11 @@ module.exports = function setupSauUsersModel (config) {
 
   return sequelize.define('sau_usuarios', {
     sau_usuarios: {
-      type: Sequelize.DOUBLE,
+      type: Sequelize.STRING,
       allowNull: false
     },
     estado: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.INTEGER(6).UNSIGNED.ZEROFILL,
       allowNull: false,
       defaultValue: 0
     }
