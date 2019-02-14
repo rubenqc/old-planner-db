@@ -236,7 +236,7 @@ test.serial('Type#createOrUpdate - class no exist', async t => {
   t.true(ClassStub.findOne.calledOnce, ' findOne should be called once')
   t.true(ClassStub.findOne.calledWith(newCondClass), 'findOne should be called with condArgs args')
 
-  t.deepEqual(type, classFixtures.findByClass(newClassId), 'should be the same')
+  t.deepEqual(type, 1, 'should be the same')
 })
 
 test.serial('Type#findAll', async t => {

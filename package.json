@@ -1,12 +1,13 @@
 {
-  "name": "iot-db",
+  "name": "planner-db",
   "version": "1.0.0",
-  "description": "Planner Entel",
+  "description": "Planner DB",
   "main": "index.js",
   "scripts": {
     "test": "DEBUG=planner:* nyc --reporter=lcov ava tests/ --verbose",
     "lint": "standard",
-    "setup": "DEBUG=planner:* node setup.js"
+    "setup": "DEBUG=planner:* node setup.js",
+    "upload-basic": "DEBUG=planner:* node examples/upload-basic.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,6 @@
     "nyc": "^13.1.0",
     "proxyquire": "^2.1.0",
     "sinon": "^7.2.3",
-    "sqlite3": "^4.0.6",
     "standard": "^12.0.1"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "defaults": "^1.0.3",
     "inquirer": "^6.2.1",
     "mysql2": "^1.6.4",
-    "sequelize": "^4.42.0"
+    "sequelize": "^4.42.0",
+    "sqlite3": "^4.0.6"
   }
 }

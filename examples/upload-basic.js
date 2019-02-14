@@ -16,7 +16,7 @@ async function run () {
 
   // generating dates
   const startDate = new Date('2017-01-02')
-  const finalDate = new Date('2019-12-02')
+  const finalDate = new Date('2030-12-02')
 
   console.log('--dates--')
   while (finalDate.getTime() >= startDate.getTime()) {

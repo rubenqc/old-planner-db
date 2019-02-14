@@ -234,7 +234,7 @@ test.serial('Datacenter#createOrUpdate - datacenterMain no exist', async t => {
   t.true(DatacenterMainStub.findOne.calledOnce, ' findOne should be called once')
   t.true(DatacenterMainStub.findOne.calledWith(condNewDatacenterMain), 'findOne should be called with condNewDatacenterMain args')
 
-  t.deepEqual(datacenter, datacenterMainFixtures.findByDatacenterMain(newDatacenterMainId), 'should be the same')
+  t.deepEqual(datacenter, 1, 'should be the same')
 })
 
 test.serial('Datacenter#findAll', async t => {
