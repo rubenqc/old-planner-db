@@ -94,7 +94,7 @@ async function run () {
   const ucayali = await Region.createOrUpdate({ region: 16, nombre: 'Ucayali' }, edgeJunin.datacenter).catch(handleFatalError)
   const arequipa = await Region.createOrUpdate({ region: 17, nombre: 'Arequipa' }, edgeArequipa.datacenter).catch(handleFatalError)
   const madreDeDios = await Region.createOrUpdate({ region: 18, nombre: 'Madre de Dios' }, edgeArequipa.datacenter).catch(handleFatalError)
-  const moquehua = await Region.createOrUpdate({ region: 19, nombre: 'Moquehua' }, edgeArequipa.datacenter).catch(handleFatalError)
+  const moquehua = await Region.createOrUpdate({ region: 19, nombre: 'Moquegua' }, edgeArequipa.datacenter).catch(handleFatalError)
   const puno = await Region.createOrUpdate({ region: 20, nombre: 'Puno' }, edgeArequipa.datacenter).catch(handleFatalError)
   const tacna = await Region.createOrUpdate({ region: 21, nombre: 'Tacna' }, edgeArequipa.datacenter).catch(handleFatalError)
   const cusco = await Region.createOrUpdate({ region: 22, nombre: 'Cusco' }, accessCusco.datacenter).catch(handleFatalError)
